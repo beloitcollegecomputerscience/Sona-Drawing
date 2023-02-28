@@ -9,11 +9,10 @@ import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 
-public class Main extends Application {
+public class Drawing_Pane extends Application {
 
 	private Canvas canvas; // The drawing area where the user draws.
 
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -32,16 +31,17 @@ public class Main extends Application {
 		stage.show();
 	}
 
-	private Canvas makeCanvas() { //Drawing pane
+	private Canvas makeCanvas() { // Drawing pane
 		Canvas canvas = new Canvas(500, 500);
 		return canvas;
 	}
 
 	private HBox makeToolPanel(Canvas canvas) {
-		Button dotButton = new Button("Dot");    
+		Button dotButton = new Button("Dot");
 		HBox tools = new HBox(10);
 		tools.getChildren().add(dotButton);
-		tools.setStyle("-fx-border-width: 5px; -fx-padding: 5; -fx-border-color: transparent; -fx-background-color: lightgray");
+		tools.setStyle(
+				"-fx-border-width: 5px; -fx-padding: 5; -fx-border-color: transparent; -fx-background-color: lightgray");
 		return tools;
 	}
 

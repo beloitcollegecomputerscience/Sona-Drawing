@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>JavaFX</name>
+=======
+	<name>sona_Drawing</name>
+>>>>>>> 465aa560bbe89282d197c6c1f5b077edfe24b50b
 	<comment></comment>
 	<projects>
 	</projects>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build">
+  <deploy>
+<<<<<<< HEAD
+    <application name="JavaFX"/>
+=======
+    <application name="sona_Drawing"/>
+>>>>>>> 465aa560bbe89282d197c6c1f5b077edfe24b50b
+    <info/>
+  </deploy>
+  <signjar/>
+</anttasks:AntTask>

@@ -28,7 +28,7 @@ public class GUI {
 		this.canvas = canvas;
 	}
 
-	public void show(Stage stage) {
+	public void showWindow(Stage stage) {
 		stage.setScene(scene);
 		stage.setTitle("Sona Drawing");
 		stage.setResizable(false);

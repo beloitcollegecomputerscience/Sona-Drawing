@@ -1,14 +1,9 @@
 package gui;
 
-
-import java.awt.MenuBar;
-
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
 
 public abstract class GUIBuilder {

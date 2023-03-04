@@ -9,6 +9,11 @@ public class GUI {
 	private Scene scene;
 	private Canvas canvas;
 	private static GUI instance = null;
+	private boolean drawmode;
+
+	public boolean isDrawmode() {
+		return drawmode;
+	}
 
 	private GUI() {
 		// private so there's only one

@@ -14,6 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 
 public class GUIEventHandler implements Initializable {
 	
@@ -31,7 +32,7 @@ public class GUIEventHandler implements Initializable {
 	RadioMenuItem drawModeButton;
 	@FXML
 	Canvas canvas;
-	
+		
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		heightSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -53,8 +54,10 @@ public class GUIEventHandler implements Initializable {
 		canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
-				Point2D lastClick = new Point2D(e.getSceneX(), e.getSceneY());
+				Point2D lastClick = new Point2D(e.getX(), e.getY());
 				GUI.instanceOf().setLastClick(lastClick);
+				GUI.instanceOf().setGraphicsContext(canvas.getGraphicsContext2D());
+				GUI.instanceOf().drawRect(new Rectangle(lastClick.getX(), lastClick.getY(), 10, 10));
 			}
 		});
 	}
@@ -63,8 +66,5 @@ public class GUIEventHandler implements Initializable {
 	}
 	public void readDrawButton() {
 		GUI.instanceOf().setState(GUI.State.DRAW);
-	}
-	public GraphicsContext getGraphicsContext() {
-		return canvas.getGraphicsContext2D();
 	}
 }

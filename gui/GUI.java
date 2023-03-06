@@ -3,6 +3,7 @@ package gui;
 import javafx.geometry.Point2D;
 import javafx.scene.*;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class GUI {
@@ -74,5 +75,9 @@ public class GUI {
 
 	public void setGraphicsContext(GraphicsContext gc) {
 		this.graphics = gc;
+	}
+	
+	public void drawRect(Rectangle r) {
+		graphics.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
 	}
 }

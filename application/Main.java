@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	public static GUI gui = GUI.getInstance();
+	public static GUI gui = GUI.instanceOf();
 
 	public static void main(String[] args) {
 		launch(args);

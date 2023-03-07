@@ -49,10 +49,31 @@ public abstract class GUIBuilder {
 		String[] drawmode = {"Draw", "View"};
 		mode.getItems().addAll(drawmode);
 		Button dotButton = new Button("Dot");
+		Button rectButton = new Button("Add Rectangle");
+		
+		ChoiceBox<String> height = makeChoiceBox();
+		height.setValue("20");
+		ChoiceBox<String> width = makeChoiceBox();
+		width.setValue("20");
+
 		HBox tools = new HBox(TOOLBARSIZE);
-		tools.getChildren().add(mode);
+		tools.getChildren().add(height);
+		tools.getChildren().add(width);
 		tools.getChildren().add(dotButton);
+		tools.getChildren().add(rectButton);
+		tools.getChildren().add(mode);
 		tools.setStyle(TOOLBARSTYLE);
 		return tools;
 	}
+	
+	private static ChoiceBox<String> makeChoiceBox() {
+		ChoiceBox<String> height = new ChoiceBox<>();
+		String[] heightNums = new String[20];
+		for (int i = 0; i < 20; i++) {
+			heightNums[i] = Integer.toString(i+1);
+		}
+		height.getItems().addAll(heightNums);
+		return height;
+	}
+
 }

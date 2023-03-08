@@ -2,7 +2,6 @@ package gui;
 
 import javafx.geometry.Point2D;
 import javafx.scene.*;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
@@ -92,8 +91,8 @@ public class GUI {
 		return gfx;
 	}
 
-	public static void doOnCanvasClick(DrawOperation b) {
-		CanvasHandler.addDrawOperation(b);
+	public static void doOnCanvasClick(Operation b) {
+		EventHandler.addCanvasOperation(b);
 	}
 
 	protected static void setGraphicsContext(GraphicsContext gfx) {

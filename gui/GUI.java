@@ -8,9 +8,14 @@ import javafx.stage.Stage;
 
 public class GUI {
 
-	enum State {
+	public enum GUIState {
 		DRAW, VIEW;
 	}
+	public enum CursorMode {
+		ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN;
+	}
+	public GUIState guiState = GUIState.VIEW;
+	public CursorMode cursorMode = CursorMode.ZERO;
 
 	private static GUI instance = null;
 	public static GUI instanceOf() {
@@ -18,13 +23,11 @@ public class GUI {
 			instance = GUIBuilder.Build(new GUI()); // this one
 		return instance;
 	}
+	
 	private Scene scene;
 	private int canvasHeight;
 	private int canvasWidth;
-	private Point2D mousePos;
-
-	private State state = State.VIEW;
-	private GraphicsContext graphics;
+	private Point2D lastClick;
 
 	private GUI() {
 		// ran only once
@@ -39,11 +42,11 @@ public class GUI {
 	}
 
 	public Point2D getLastClick() {
-		return mousePos;
+		return lastClick;
 	}
 
-	public State guiMode() {
-		return state;
+	public GUIState guiMode() {
+		return guiState;
 	}
 
 	protected void setCanvasHeight(int canvasHeight) {
@@ -55,15 +58,15 @@ public class GUI {
 	}
 
 	public void setLastClick(Point2D mousePos) {
-		this.mousePos = mousePos;
+		this.lastClick = mousePos;
 	}
 
 	public void setScene(Scene scene) {
 		this.scene = scene;
 	}
 
-	protected void setState(State state) {
-		this.state = state;
+	protected void setState(GUIState gUIState) {
+		this.guiState = gUIState;
 	}
 
 	public void showWindow(Stage stage) {
@@ -71,13 +74,5 @@ public class GUI {
 		stage.setTitle("Sona Drawing");
 		stage.setResizable(true);
 		stage.show();
-	}
-
-	public void setGraphicsContext(GraphicsContext gc) {
-		this.graphics = gc;
-	}
-	
-	public void drawRect(Rectangle r) {
-		graphics.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
 	}
 }

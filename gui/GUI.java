@@ -2,77 +2,101 @@ package gui;
 
 import javafx.geometry.Point2D;
 import javafx.scene.*;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class GUI {
 
-	public enum GUIState {
-		DRAW, VIEW;
+	public static enum GUIState { //order is important
+		VIEW, DRAW;
 	}
-	public enum CursorMode {
+	public static enum CursorMode { //order is important
 		ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN;
 	}
-	public GUIState guiState = GUIState.VIEW;
-	public CursorMode cursorMode = CursorMode.ZERO;
+	private static GUIState guiState = GUIState.VIEW;
+	private static CursorMode cursorMode = CursorMode.ZERO;
 
 	private static GUI instance = null;
-	public static GUI instanceOf() {
-		if (instance == null)
-			instance = GUIBuilder.Build(new GUI()); // this one
-		return instance;
-	}
-	
-	private Scene scene;
-	private int canvasHeight;
-	private int canvasWidth;
-	private Point2D lastClick;
+	private static Scene scene;
+	private static int canvasHeight;
+	private static int canvasWidth;
+	private static Point2D lastClick;
+	private static GraphicsContext gfx;
 
 	private GUI() {
 		// ran only once
 	}
+	public static GUI getInstance() {
+		if (instance == null) {
+			instance = new GUI();
+			GUIBuilder.Build();
+		}
+		return instance;
+	}
 
-	public int getCanvasHeight() {
+	public static CursorMode getCursorMode() {
+		return cursorMode;
+	}
+	public static void setCursorMode(CursorMode cursorMode) {
+		GUI.cursorMode = cursorMode;
+	}
+	public static int getCanvasHeight() {
 		return canvasHeight;
 	}
 
-	public int getCanvasWidth() {
+	public static int getCanvasWidth() {
 		return canvasWidth;
 	}
 
-	public Point2D getLastClick() {
+	public static Point2D getLastClick() {
 		return lastClick;
 	}
 
-	public GUIState guiMode() {
-		return guiState;
+	protected static void setCanvasHeight(int canvasHeight) {
+		GUI.canvasHeight = canvasHeight;
 	}
 
-	protected void setCanvasHeight(int canvasHeight) {
-		this.canvasHeight = canvasHeight;
+	protected static void setCanvasWidth(int canvasWidth) {
+		GUI.canvasWidth = canvasWidth;
 	}
 
-	protected void setCanvasWidth(int canvasWidth) {
-		this.canvasWidth = canvasWidth;
+	protected static void setLastClick(Point2D mousePos) {
+		GUI.lastClick = mousePos;
 	}
 
-	public void setLastClick(Point2D mousePos) {
-		this.lastClick = mousePos;
+	public static void setScene(Scene scene) {
+		GUI.scene = scene;
 	}
 
-	public void setScene(Scene scene) {
-		this.scene = scene;
+	protected static void setState(GUIState gUIState) {
+		GUI.setGuiState(gUIState);
 	}
 
-	protected void setState(GUIState gUIState) {
-		this.guiState = gUIState;
-	}
-
-	public void showWindow(Stage stage) {
+	public void showWindow(Stage stage) { // cannot be static
 		stage.setScene(scene);
 		stage.setTitle("Sona Drawing");
 		stage.setResizable(true);
 		stage.show();
+	}
+
+	public static GUIState getGuiState() {
+		return guiState;
+	}
+
+	public static void setGuiState(GUIState guiState) {
+		GUI.guiState = guiState;
+	}
+
+	public static GraphicsContext getGraphicsContext() {
+		return gfx;
+	}
+
+	public static void doOnCanvasClick(DrawOperation b) {
+		CanvasHandler.addDrawOperation(b);
+	}
+
+	protected static void setGraphicsContext(GraphicsContext gfx) {
+		GUI.gfx = gfx;
 	}
 }

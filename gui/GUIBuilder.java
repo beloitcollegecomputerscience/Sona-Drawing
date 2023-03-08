@@ -10,10 +10,9 @@ public abstract class GUIBuilder {
 
 	private static FXMLLoader loader = new FXMLLoader();
 
-	public static GUI Build(GUI gui) {
+	protected static void Build() {
 		Scene scene = makeScene();
-		gui.setScene(scene);
-		return gui;
+		GUI.setScene(scene);
 	}
 	
 	private static Scene makeScene() {

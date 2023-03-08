@@ -43,19 +43,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUIEventHandler">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EventHandler">
   <children>
     <MenuBar useSystemMenuBar="true" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="Settings">
           <items>
-            <Menu mnemonicParsing="false" text="Mode">
+            <Menu fx:id="guiModes" mnemonicParsing="false" text="Mode">
                      <items>
-                        <RadioMenuItem fx:id="viewModeButton" mnemonicParsing="false" onAction="#readViewButton" selected="true" text="View">
+                        <RadioMenuItem fx:id="viewModeButton" mnemonicParsing="false" selected="true" text="View">
                            <toggleGroup>
                               <ToggleGroup fx:id="interactionMode" />
                            </toggleGroup></RadioMenuItem>
-                        <RadioMenuItem fx:id="drawModeButton" mnemonicParsing="false" onAction="#readDrawButton" text="Draw" toggleGroup="$interactionMode" />
+                        <RadioMenuItem fx:id="drawModeButton" mnemonicParsing="false" text="Draw" toggleGroup="$interactionMode" />
                      </items></Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <Menu mnemonicParsing="false" text="Canvas">

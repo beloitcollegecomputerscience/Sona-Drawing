@@ -43,13 +43,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUIEventHandler">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EventHandler">
   <children>
     <MenuBar useSystemMenuBar="true" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="Settings">
           <items>
-            <Menu mnemonicParsing="false" text="Mode">
+            <Menu fx:id="guiModes" mnemonicParsing="false" text="Mode">
                      <items>
                         <RadioMenuItem fx:id="viewModeButton" mnemonicParsing="false" selected="true" text="View">
                            <toggleGroup>
@@ -82,6 +82,26 @@
                   </Menu>
           </items>
         </Menu>
+            <Menu fx:id="toolsMenu" mnemonicParsing="false" text="Tools">
+               <items>
+                  <RadioMenuItem fx:id="tools0" mnemonicParsing="false" text="0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="toolsGroup" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="tools1" mnemonicParsing="false" text="1" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools2" mnemonicParsing="false" text="2" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools3" mnemonicParsing="false" text="3" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools4" mnemonicParsing="false" text="4" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools5" mnemonicParsing="false" text="5" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools6" mnemonicParsing="false" text="6" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools7" mnemonicParsing="false" text="7" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools8" mnemonicParsing="false" text="8" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools9" mnemonicParsing="false" text="9" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools10" mnemonicParsing="false" text="10" toggleGroup="$toolsGroup" />
+                  <RadioMenuItem fx:id="tools11" mnemonicParsing="false" text="11" toggleGroup="$toolsGroup" />
+               </items>
+            </Menu>
       </menus>
     </MenuBar>
       <AnchorPane prefHeight="600.0" prefWidth="800.0">

@@ -4,55 +4,63 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import helperClasses.ClickOperation;
+import helperClasses.SliderOperation;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
-import javafx.scene.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
 public class GUI {
 
 	protected static enum CursorMode { // order is important
-		EIGHT, ELEVEN, FIVE, FOUR, NINE, ONE, SEVEN, SIX, TEN, THREE, TWO, ZERO;
+		ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN;
 	}
 	protected static enum GUIState { // order is important
-		DRAW, VIEW;
+		VIEW, DRAW;
 	}
 	private static int canvasHeight = 5;
 	private static int canvasWidth = 5;
 
 	private static CursorMode cursorMode = CursorMode.ZERO;
+	private static final String FXMLURL = "gui/gui.fxml";
 	private static GraphicsContext gc;
 	private static GUIState guiState = GUIState.VIEW;
 	private static GUI instance = null;
-	private static Point2D lastClick;
-	private static FXMLLoader loader = new FXMLLoader();
 	private static final boolean RESIZEABLE = false;
 	private static Scene root;
 
 	private GUI() { // ran only once
 		try {
-			Parent root = loader.load(new FileInputStream("gui/gui.fxml"));
-			setScene(new Scene(root));
+			root = new Scene(readFXML());
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
 	}
-	public static void doOnCanvasClick(ClickOperation b) {
-		EventHandler.addCanvasOperation(b);
+
+	public static void doOnCanvasClick(ClickOperation o) {
+		EventHandler.addCanvasOperation(o);
+	}
+
+	public static void doOnHeightUpdate(SliderOperation o) {
+		EventHandler.addHeightUpdateOperation(o);
+	}
+
+	public static void doOnWidthUpdate(SliderOperation o) {
+		EventHandler.addWidthUpdateOperation(o);
 	}
 
 	public static int getCanvasHeight() {
 		return canvasHeight;
 	}
+
 	public static int getCanvasWidth() {
 		return canvasWidth;
 	}
 	public static CursorMode getCursorMode() {
 		return cursorMode;
 	}
-
 	public static GraphicsContext getGraphicsContext() {
 		return gc;
 	}
@@ -62,18 +70,9 @@ public class GUI {
 	}
 
 	public static GUI getInstance() {
-		if (instance == null) {
+		if (instance == null)
 			instance = new GUI();
-		}
 		return instance;
-	}
-
-	public static Point2D getLastClick() {
-		return lastClick;
-	}
-
-	public static void setScene(Scene root) {
-		GUI.root = root;
 	}
 
 	protected static void setCanvasHeight(int canvasHeight) {
@@ -96,12 +95,10 @@ public class GUI {
 		GUI.guiState = guiState;
 	}
 
-	protected static void setLastClick(Point2D mousePos) {
-		GUI.lastClick = mousePos;
-	}
-
-	protected static void setState(GUIState gUIState) {
-		GUI.setGuiState(gUIState);
+	private static Parent readFXML() throws IOException {
+		FileInputStream fs = new FileInputStream(FXMLURL);
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		return fxmlLoader.load(fs);
 	}
 
 	public void showWindow(Stage stage) { // cannot be static

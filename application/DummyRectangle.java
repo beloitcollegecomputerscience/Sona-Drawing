@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class DummyRectangle {
 
-	private static GraphicsContext gc = GUI.getGraphicsContext();;
+	private static GraphicsContext gc = GUI.getGraphicsContext();
 	private int height;
 	private int width;
 	private int x;

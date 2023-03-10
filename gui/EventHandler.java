@@ -5,15 +5,14 @@ import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-import gui.GUI.CursorMode;
-import gui.GUI.GUIState;
 import helperClasses.ClickOperation;
+import helperClasses.KBOperation;
+import helperClasses.Operation;
 import helperClasses.Point;
-import helperClasses.Setter;
+import helperClasses.SliderOperation;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -21,7 +20,10 @@ import javafx.scene.input.MouseEvent;
 public class EventHandler implements Initializable {
 
 	private static Vector<ClickOperation> canvasOperations = new Vector<>();
-	
+	private static Vector<SliderOperation> heightSliderOperations = new Vector<>();
+	private static Vector<SliderOperation> widthSliderOperations = new Vector<>();
+	private static Vector<KBOperation> keyboardOperations = new Vector<>();
+
 	@FXML
 	Canvas canvas;
 	@FXML
@@ -38,7 +40,6 @@ public class EventHandler implements Initializable {
 	RadioMenuItem viewModeButton;
 	@FXML
 	MenuItem widthLabel;
-
 	@FXML
 	Slider widthSlider;
 
@@ -53,19 +54,20 @@ public class EventHandler implements Initializable {
 	private static void handleCanvas(Canvas c) {
 		c.addEventHandler(Event.ANY, (e) -> {
 			if (e.getEventType().equals(MouseEvent.MOUSE_CLICKED)) {
-				for (ClickOperation d : canvasOperations)
-					d.execute(getLastClick((MouseEvent) e));
+				for (ClickOperation o : canvasOperations)
+					o.execute(getLastClick((MouseEvent) e));
 			}
 		});
 	}
 
-	private static void handleSlider(Slider s, MenuItem label, Setter<Integer> setter) {
+	private static void handleSlider(Slider s, MenuItem label, Vector<SliderOperation> ops) {
 		// Update actual value only when user is done sliding
-		s.addEventHandler(MouseEvent.MOUSE_RELEASED, (event) -> {
-			setter.set(((int) s.getValue()));
+		s.addEventHandler(MouseEvent.MOUSE_RELEASED, (e) -> {
+			for (SliderOperation o : ops)
+				o.execute((int) s.getValue());
 		});
 		// Don't forget to continuously update the label!
-		s.valueProperty().addListener((event) -> {
+		s.valueProperty().addListener((e) -> {
 			label.setText(Integer.toString((int) s.getValue()));
 		});
 	}
@@ -73,12 +75,8 @@ public class EventHandler implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		GUI.setGraphicsContext(canvas.getGraphicsContext2D());
-		handleSlider(heightSlider, heightLabel, (val) -> {
-			GUI.setCanvasHeight(val);
-		});
-		handleSlider(widthSlider, widthLabel, (val) -> {
-			GUI.setCanvasWidth(val);
-		});
+		handleSlider(heightSlider, heightLabel, heightSliderOperations);
+		handleSlider(widthSlider, widthLabel, widthSliderOperations);
 		handleMenu(guiModes, GUI.GUIState.values(), (mode) -> {
 			GUI.setGuiState(mode);
 		});
@@ -87,12 +85,20 @@ public class EventHandler implements Initializable {
 		});
 		handleCanvas(canvas);
 	}
-	private <T> void handleMenu(Menu menu, T[] modes, Setter<T> modeSet) {
+	private <T> void handleMenu(Menu menu, T[] modes, Operation<T> modeSet) {
 		Iterator<MenuItem> iter = menu.getItems().iterator();
 		for (T mode : modes) {
-			iter.next().setOnAction((event) -> {
-				modeSet.set(mode);
+			iter.next().setOnAction((e) -> {
+				modeSet.execute(mode);
 			});
 		}
+	}
+
+	protected static void addHeightUpdateOperation(SliderOperation o) {
+		heightSliderOperations.add(o);
+	}
+
+	protected static void addWidthUpdateOperation(SliderOperation o) {
+		widthSliderOperations.add(o);
 	}
 }

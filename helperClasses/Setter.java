@@ -1,4 +1,4 @@
-package gui;
+package helperClasses;
 
 @FunctionalInterface
 public interface Setter<T> {

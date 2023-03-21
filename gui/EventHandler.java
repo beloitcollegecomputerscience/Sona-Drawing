@@ -37,7 +37,7 @@ public class EventHandler implements Initializable {
 	@FXML
 	Menu toolsMenu;
 	@FXML
-	RadioMenuItem viewModeButton;
+	RadioMenuItem dotModeButton;
 	@FXML
 	MenuItem widthLabel;
 	@FXML

@@ -17,7 +17,7 @@ public class GUI {
 		ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN;
 	}
 	protected static enum GUIState { // order is important
-		VIEW, DRAW;
+		DOT, DRAW;
 	}
 	private static int canvasHeight = 5;
 	private static int canvasWidth = 5;
@@ -25,7 +25,7 @@ public class GUI {
 	private static CursorMode cursorMode = CursorMode.ZERO;
 	private static final String FXMLURL = "gui/gui.fxml";
 	private static GraphicsContext gc;
-	private static GUIState guiState = GUIState.VIEW;
+	private static GUIState guiState = GUIState.DOT;
 	private static GUI instance = null;
 	private static final boolean RESIZEABLE = false;
 	private static Scene root;

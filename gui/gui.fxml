@@ -51,7 +51,7 @@
           <items>
             <Menu fx:id="guiModes" mnemonicParsing="false" text="Mode">
                      <items>
-                        <RadioMenuItem fx:id="viewModeButton" mnemonicParsing="false" selected="true" text="View">
+                        <RadioMenuItem fx:id="dotModeButton" mnemonicParsing="false" selected="true" text="Dot">
                            <toggleGroup>
                               <ToggleGroup fx:id="interactionMode" />
                            </toggleGroup></RadioMenuItem>

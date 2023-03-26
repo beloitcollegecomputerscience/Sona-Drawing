@@ -12,6 +12,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
+				
 		GUI.getInstance().showWindow(stage);
 
 		// Example: a grid of squares that appear on click, specific numbers not important

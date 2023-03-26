@@ -102,6 +102,46 @@
                   <RadioMenuItem fx:id="tools11" mnemonicParsing="false" text="11" toggleGroup="$toolsGroup" />
                </items>
             </Menu>
+            <Menu fx:id="clearMenu" mnemonicParsing="false" text="Clear">
+               <items>
+                  <RadioMenuItem fx:id="clearTools0" mnemonicParsing="false" text="0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="clearToolsGroup" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="clearTools1" mnemonicParsing="false" text="1" toggleGroup="$clearToolsGroup" />
+               </items>
+            </Menu>
+            <Menu fx:id="dotMenu" mnemonicParsing="false" text="Dot">
+               <items>
+                  <RadioMenuItem fx:id="dotTools0" mnemonicParsing="false" text="0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="dotToolsGroup" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="dotTools1" mnemonicParsing="false" text="1" toggleGroup="$dotToolsGroup" />
+               </items>
+            </Menu>
+            <Menu fx:id="wallMenu" mnemonicParsing="false" text="Wall">
+               <items>
+                  <RadioMenuItem fx:id="wallTools0" mnemonicParsing="false" text="0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="wallToolsGroup" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="wallTools1" mnemonicParsing="false" text="1" toggleGroup="$wallToolsGroup" />
+               </items>
+            </Menu>
+            <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+               <items>
+                  <RadioMenuItem fx:id="helpTools0" mnemonicParsing="false" text="0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="helpToolsGroup" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="helpTools1" mnemonicParsing="false" text="1" toggleGroup="$helpToolsGroup" />
+               </items>
+            </Menu>
       </menus>
     </MenuBar>
       <AnchorPane prefHeight="600.0" prefWidth="800.0">

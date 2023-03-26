@@ -42,7 +42,15 @@ public class EventHandler implements Initializable {
 	MenuItem widthLabel;
 	@FXML
 	Slider widthSlider;
-
+	@FXML
+	Menu clearMenu;
+	@FXML
+	Menu dotMenu;
+	@FXML
+	Menu wallMenu;
+	@FXML
+	Menu helpMenu;
+	
 	public static void addCanvasOperation(ClickOperation d) {
 		canvasOperations.add(d);
 	}
@@ -74,6 +82,7 @@ public class EventHandler implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+				
 		GUI.setGraphicsContext(canvas.getGraphicsContext2D());
 		handleSlider(heightSlider, heightLabel, heightSliderOperations);
 		handleSlider(widthSlider, widthLabel, widthSliderOperations);

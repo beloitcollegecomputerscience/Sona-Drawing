@@ -26,7 +26,7 @@ public class Main extends Application {
 			int height = Controller.getCursorHeight();
 			gc.fillRect(click.x, click.y, width * 2, height * 2); // x2 for demonstration
 		}));
-		
+
 		Stub s = new Stub();
 		s.example();
 	}

@@ -1,4 +1,4 @@
-package InitialSetup;
+package initialSetup;
 
 public class WallsPosition {
 }

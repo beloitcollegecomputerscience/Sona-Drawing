@@ -1,4 +1,4 @@
-package InitialSetup;
+package Internal_Structure;
 
 public class WallsPosition {
 }

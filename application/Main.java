@@ -19,6 +19,7 @@ public class Main extends Application {
 
 		GUI.getInstance().showWindow(stage);
 
+		//Example code
 		GraphicsContext gc = Controller.getGraphicsContext();
 		Controller.doOnCanvasClick(new ClickOperation(CursorMode.DOTS, click -> {
 			// Make sure you get the height and width in here if you're expecting them to change!

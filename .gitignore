@@ -26,6 +26,7 @@
 
 # Idea
 .idea/
+Sona-drawing.iml
 
 # Don't upload binaries
 bin/

@@ -24,6 +24,9 @@
 .metadata/
 .project
 
+# Idea
+.idea/
+
 # Don't upload binaries
 bin/
 

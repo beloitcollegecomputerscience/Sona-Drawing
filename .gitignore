@@ -25,6 +25,10 @@
 .project
 .settings
 
+# IntelliJ IDEA
+.idea/
+*.iml
+
 # Don't upload binaries
 bin/
 

@@ -16,7 +16,7 @@ public class GUI {
 	protected static enum GUIState { // order is important
 		DOTS, WALLS, LINE, VIEW;
 	}
-	private static final String FXMLURL = "gui/gui.fxml";
+	private static final String FXMLURL = "src/gui/gui.fxml";
 	private static GUI instance = null;
 	private static final boolean RESIZEABLE = false;
 	private static Scene root;

@@ -17,17 +17,23 @@ public class test {
         }
         System.out.println("print test------------------------");
 
-        System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));
+        System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));//should be empty
         dp.dots_coordinate.add(new int[]{1, 1});
         dp.dots_coordinate.add(new int[]{1, 2});
+        dp.dots_coordinate.add(new int[]{2, 2});
 //        dp.dots_coordinate.add(new int[]{1, 3});
-        System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray())); // should give [[1, 1], [1, 2]]
+        System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray())); // should give [[1, 1], [1, 2], [2, 2]]
         dp.add(new int[]{2, 2}, 2, 2, canvas.status);
-        System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));// should add [2, 2], [4, 2], [2, 4], [4, 4]
+        System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));
+        // should add [4, 2], [2, 4], [4, 4] ( where [2, 2]should not be added twice )
         System.out.println(dp.checkDup(new int[]{2, 9},dp.dots_coordinate)); //should return false
         System.out.println(dp.checkDup(new int[]{2, 4},dp.dots_coordinate)); //should return true
-        System.out.println((dp.dots_coordinate));
-        System.out.println(new int[]{2,8});
+
+        dp.delete(new int[]{1, 2}, canvas.status);
+        dp.delete(new int[]{1, 1}, canvas.status);
+        dp.delete(new int[]{2, 2}, canvas.status);
+        System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));// should give [4, 2], [2, 4], [4, 4]
+        System.out.println(dp.checkDup(new int[]{2, 2},dp.dots_coordinate)); //should return false
 
         System.out.println("print the canvas------------------------");
         for(int i=0; i<canvas.status.length; i++){
@@ -36,7 +42,7 @@ public class test {
             }
             System.out.println();
         }
-
+        // should have [1, 0, 0] in (2, 4), (4, 2) and (4, 4), and [0, 0, 0] in rest position
 
     }
 

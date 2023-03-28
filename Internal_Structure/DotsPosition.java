@@ -11,7 +11,9 @@ public class DotsPosition {
         if (TopRightCoordinate[0] % 2 == 0 && TopRightCoordinate[1] % 2 == 0) {
             for (int i = 1; i < Length + 1; i++) {
                 for (int j = 1; j < Width + 1; j++) {
-                    dots_coordinate.add(new int[]{TopRightCoordinate[0] * j, TopRightCoordinate[1] * i});
+                    if  (!checkDup(new int[]{TopRightCoordinate[0] * j, TopRightCoordinate[1] * i}, dots_coordinate)){
+                        dots_coordinate.add(new int[]{TopRightCoordinate[0] * j, TopRightCoordinate[1] * i});
+                    }
                     status[TopRightCoordinate[0] * i][TopRightCoordinate[1] * j][0] = 1;
                 }
             }
@@ -25,6 +27,21 @@ public class DotsPosition {
         }
         return false;
     }
+
+
+    public void delete(int[] target, int[][] status[]) {
+        // Implementation of add function goes here
+        if (target[0] % 2 == 0 && target[1] % 2 == 0) {
+            for (int i = 0; i < dots_coordinate.size(); i++){
+                if (Arrays.equals(target, dots_coordinate.get(i))){
+                    dots_coordinate.remove(i);}
+                    status[target[0]][target[1]][0] = 0;
+
+            }
+        }
+    }
+
+
 
 ////  test runs:
 //

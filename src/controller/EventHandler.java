@@ -1,9 +1,9 @@
-package gui;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import gui.Controller.CursorMode;
-import helperClasses.ClickOperation;
+
+import controller.Controller.CursorMode;
 import helperClasses.Point;
 import helperClasses.SonaSlider;
 import javafx.event.Event;
@@ -38,8 +38,7 @@ public class EventHandler implements Initializable {
 	Slider widthSlider;
 
 	private static void doCanvasClickOperations(Point click) {
-		for (ClickOperation o : Controller.getCanvasOperations())
-			o.execute(click);
+		CanvasHandler.executeAll(click);
 	}
 
 	private static Point getClick(MouseEvent e) {
@@ -63,7 +62,8 @@ public class EventHandler implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Controller.setGraphicsContext(canvas.getGraphicsContext2D());
+		CanvasHandler.init();
+		Controller.init(canvas);
 		handleCanvas(canvas);
 		handleModeSetting();
 		initSliders();

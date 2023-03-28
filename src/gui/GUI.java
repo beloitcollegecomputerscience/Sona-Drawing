@@ -3,7 +3,6 @@ package gui;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import helperClasses.ClickOperation;
 import helperClasses.SliderOperation;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

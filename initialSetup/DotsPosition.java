@@ -1,4 +1,4 @@
-package InitialSetup;
+package initialSetup;
 
 import java.util.ArrayList;
 import java.util.Arrays;

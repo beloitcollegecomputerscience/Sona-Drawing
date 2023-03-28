@@ -1,7 +1,11 @@
 package application;
 
+import gui.Controller;
 import gui.GUI;
+import gui.Controller.CursorMode;
+import helperClasses.ClickOperation;
 import javafx.application.Application;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -12,20 +16,19 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-				
+
 		GUI.getInstance().showWindow(stage);
 
-		// Example: a grid of squares that appear on click, specific numbers not important
-		final int padding = 2;
-		final int boxSize = 18;
-		final int boxesX = 40;
-		final int boxesY = 30;
-		DummyRectangle[][] grid = new DummyRectangle[boxesY][boxesX];
-		for (int j = 0; j < boxesY; j++) {
-			for (int i = 0; i < boxesX; i++) {
-				grid[j][i] = new DummyRectangle(i * (boxSize + padding), j * (boxSize + padding), boxSize);
-				grid[j][i].drawOnClick();
-			}
-		}
+		//Example code
+		GraphicsContext gc = Controller.getGraphicsContext();
+		Controller.doOnCanvasClick(new ClickOperation(CursorMode.DOTS, click -> {
+			// Make sure you get the height and width in here if you're expecting them to change!
+			int width = Controller.getCursorWidth();
+			int height = Controller.getCursorHeight();
+			gc.fillRect(click.x, click.y, width * 2, height * 2); // x2 for demonstration
+		}));
+
+		Stub s = new Stub();
+		s.example();
 	}
 }

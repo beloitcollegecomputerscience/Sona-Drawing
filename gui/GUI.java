@@ -23,7 +23,7 @@ public class GUI {
 	public void setScene(Scene scene) {
 		this.scene = scene;
 	}
-	
+
 	public void setCanvas(Canvas canvas) {
 		this.canvas = canvas;
 	}

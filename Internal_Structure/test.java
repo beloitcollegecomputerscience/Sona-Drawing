@@ -15,7 +15,7 @@ public class test {
             }
             System.out.println();
         }
-        System.out.println("print test------------------------");
+        System.out.println("dots test------------------------");
 
         System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));//should be empty
         dp.dots_coordinate.add(new int[]{1, 1});
@@ -26,14 +26,28 @@ public class test {
         dp.add(new int[]{2, 2}, 2, 2, canvas.status);
         System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));
         // should add [4, 2], [2, 4], [4, 4] ( where [2, 2]should not be added twice )
-        System.out.println(dp.checkDup(new int[]{2, 9},dp.dots_coordinate)); //should return false
-        System.out.println(dp.checkDup(new int[]{2, 4},dp.dots_coordinate)); //should return true
+        System.out.println(canvas.checkDup(new int[]{2, 9},dp.dots_coordinate)); //should return false
+        System.out.println(canvas.checkDup(new int[]{2, 4},dp.dots_coordinate)); //should return true
 
         dp.delete(new int[]{1, 2}, canvas.status);
         dp.delete(new int[]{1, 1}, canvas.status);
         dp.delete(new int[]{2, 2}, canvas.status);
         System.out.println(Arrays.deepToString(dp.dots_coordinate.toArray()));// should give [4, 2], [2, 4], [4, 4]
-        System.out.println(dp.checkDup(new int[]{2, 2},dp.dots_coordinate)); //should return false
+        System.out.println(canvas.checkDup(new int[]{2, 2},dp.dots_coordinate)); //should return false
+
+
+        System.out.println("walls_test -------------------------- ");
+        WallsPosition wp = new WallsPosition();
+        System.out.println(Arrays.deepToString(wp.walls_coordinate_direction.toArray()));
+        wp.add(new int[]{0, 0}, 1, canvas.status);  //should not add this point(even)
+        wp.add(new int[]{1, 1}, 1, canvas.status);
+        wp.add(new int[]{1, 3}, 2, canvas.status);  //should add these two walls in
+
+
+        wp.delete(new int[]{1, 3}, canvas.status);
+        wp.delete(new int[]{1, 0}, canvas.status);
+        System.out.println(Arrays.deepToString(wp.walls_coordinate_direction.toArray()));
+
 
         System.out.println("print the canvas------------------------");
         for(int i=0; i<canvas.status.length; i++){

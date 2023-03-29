@@ -12,7 +12,7 @@ public abstract class GUIBuilder {
 	private static final String STACKPANESTYLE = "-fx-border-width: 1px; -fx-border-color: blue";
 	private static final String BORDERPANESTYLE = "-fx-border-width: 1px; -fx-border-color: black";
 	private static final String TOOLBARSTYLE = "-fx-border-width: 5px; -fx-padding: 5; -fx-border-color: transparent; -fx-background-color: lightgray";
-	
+
 	protected static GUI Build(GUI gui) {
 		Canvas canvas = makeCanvas();
 		Scene scene = makeScene(canvas);
@@ -38,13 +38,13 @@ public abstract class GUIBuilder {
 		root.setBottom(makeToolPanel(c));
 		return root;
 	}
-	
+
 	private static Scene makeScene(Canvas c) {
 		return new Scene(makeBorderPane(c));
 	}
-	
+
 	private static HBox makeToolPanel(Canvas canvas) {
-		Button dotButton = new Button("Dot");    
+		Button dotButton = new Button("Dot");
 		HBox tools = new HBox(TOOLBARSIZE);
 		tools.getChildren().add(dotButton);
 		tools.setStyle(TOOLBARSTYLE);

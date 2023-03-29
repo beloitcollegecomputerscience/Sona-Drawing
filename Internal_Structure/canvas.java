@@ -1,4 +1,5 @@
 package Internal_Structure;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -20,6 +21,13 @@ public class canvas {
         }
     }
 
+
+    public static boolean checkDup(int[] target, ArrayList<int[]> coordinate){
+        for (int i = 0; i < coordinate.size(); i++){
+            if (Arrays.equals(target, coordinate.get(i))){return true;}
+        }
+        return false;
+    }
 
 // test runs
     public static void main(String args[]) {

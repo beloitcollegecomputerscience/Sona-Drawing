@@ -1,6 +1,6 @@
 package application;
-import gui.Controller;
-import gui.Controller.CursorMode;
+import controller.Controller;
+import controller.Controller.CursorMode;
 import helperClasses.ClickOperation;
 import helperClasses.Point;
 

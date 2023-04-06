@@ -25,7 +25,7 @@ public class Main extends Application {
 			// Make sure you get the height and width in here if you're expecting them to change!
 			int width = Controller.getCursorWidth();
 			int height = Controller.getCursorHeight();
-			gc.fillRect(click.x, click.y, width * 2, height * 2); // x2 to make rectangles bigger, for demonstration
+			gc.fillOval(click.x, click.y, width, height); // x2 to make rectangles bigger, for demonstration
 		}));
 
 		Stub s = new Stub();

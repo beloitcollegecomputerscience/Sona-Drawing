@@ -12,7 +12,7 @@ public class Controller {
 		DOTS, LINES, WALLS, VIEW;
 	}
 	private static CursorMode cursorMode = CursorMode.DOTS; // Default
-	
+
 	private static SonaSlider heightSlider;
 	private static SonaSlider widthSlider;
 	public static Controller instance = null;

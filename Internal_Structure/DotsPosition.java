@@ -49,7 +49,7 @@ public class DotsPosition {
         Controller.doOnCanvasClick(new ClickOperation(CursorMode.DOTS, click -> {
             // 'click' is the x,y location of the last mouse click (you can call it anything you want)
             int [] new_coordinate = closestpoint(click.x,click.y);
-             add(new int[]{new_coordinate[0], new_coordinate[1]}, 5, 5);
+             add(new int[]{new_coordinate[0], new_coordinate[1]}, 1, 1);
              dotPrinter(coordinate);
               
             //System.out.println("Click! x:" + click.x + " y:" + click.y);
@@ -61,7 +61,7 @@ public class DotsPosition {
             int [] point = coordinate.get(i);
             GraphicsContext gc = Controller.getGraphicsContext();
 
-            gc.fillOval(point[0], point[1],1, 1);
+            gc.fillOval(point[0], point[1],5, 5);
 
         }
 

@@ -29,10 +29,6 @@
 .idea/
 *.iml
 
-# Idea
-.idea/
-Sona-drawing.iml
-out/
 
 # Don't upload binaries
 bin/

@@ -4,79 +4,93 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DotsPosition {
-    public static void main(String args[]){
-        // small setup for showing, could be bigger by changing the numb
-        ArrayList<int[]> coordinate =new ArrayList<>();    //create array storing status
+    public ArrayList<int[]> dots_coordinate = new ArrayList<>(); // create array storing status
 
-        // example of how to add array into the arraylist
-
-
-        //test run, whether it stores those coordinates of dots
-
-        System.out.println("------------test run | add dots-------------");
-        coordinate.add(new int[]{1, 1});
-        coordinate.add(new int[]{1, 2});
-        coordinate.add(new int[]{1, 3});
-        System.out.println("get the x/y coordinate of a certain dots");
-        System.out.println(Arrays.toString(new int[]{coordinate.get(1)[1]}));
-        System.out.println(Arrays.toString(new int[]{coordinate.size()}));// should give 3
-        System.out.println(Arrays.toString(coordinate.get(1))); // should give {1, 2}
-
-
-        System.out.println("------------test run | delete dots-------------");
-        coordinate.remove(0); //delete first one
-        int[] a = {1, 2};
-        System.out.println(coordinate.size());
-
-        // delete the certain coordinate
-        int pointer = 0;
-        for (int i = 0; i < coordinate.size(); i++) {
-            if (Arrays.equals(a, (coordinate.get(i)))) {
-                coordinate.remove(i);
+    public void add(int[] TopRightCoordinate, int Length, int Width,int[][] status[]) {
+        // Implementation of add function goes here
+        if (TopRightCoordinate[0] % 2 == 0 && TopRightCoordinate[1] % 2 == 0) {
+            for (int i = 1; i < Length + 1; i++) {
+                for (int j = 1; j < Width + 1; j++) {
+                    if  (!checkDup(new int[]{TopRightCoordinate[0] * j, TopRightCoordinate[1] * i}, dots_coordinate)){
+                        dots_coordinate.add(new int[]{TopRightCoordinate[0] * j, TopRightCoordinate[1] * i});
+                    }
+                    status[TopRightCoordinate[0] * i][TopRightCoordinate[1] * j][0] = 1;
+                }
             }
-
-            if (pointer == coordinate.size()) {
-                break;
-            }
-            pointer++;
         }
-        System.out.println("get the x/y coordinate of a certain dots");
-        System.out.println(coordinate.size());// should give 1
-        System.out.println(Arrays.toString(coordinate.get(0))); // should give {1, 2}
-//        System.out.println(Arrays.toString(coordinate.get(1)));//should be fails
-
     }
 
 
-//    public class add(int[] TopRightCoordinate, int Length, int Width){
+    public boolean checkDup(int[] target, ArrayList<int[]> coordinate){
+        for (int i = 0; i < coordinate.size(); i++){
+            if (Arrays.equals(target, coordinate.get(i))){return true;}
+        }
+        return false;
+    }
+
+
+    public void delete(int[] target, int[][] status[]) {
+        // Implementation of add function goes here
+        if (target[0] % 2 == 0 && target[1] % 2 == 0) {
+            for (int i = 0; i < dots_coordinate.size(); i++){
+                if (Arrays.equals(target, dots_coordinate.get(i))){
+                    dots_coordinate.remove(i);}
+                status[target[0]][target[1]][0] = 0;
+
+            }
+        }
+    }
+
+
+
+////  test runs:
+//
+//    public static void main(String args[]) {
+//        DotsPosition dotsPosition = new DotsPosition(); // create an instance of DotsPosition
+//        dotsPosition.test(); // call the test method
 //    }
-    /*input example: {2, 2}, 2, 1
-      expectation:
-      1. Add the array {2, 2}, {2, 4} into the "coordinate" arraylist
-      2. Change the canvas status of points with coordinate {1, 2}, {1, 4} from {0, 0, 0} into {1, 0, 0}
-      Notice that:
-      1. the coordinate should be detected whether it is EVEN or not at the beginning.
-      2. if the matrices from two adds operation collapse with each other
-      (which means that there are dots adding more than once), there should only be one record in the "coordinate" arraylist
-      3. the status updates should happen right after everytime we use the add function.
-      4. only the EVEN number coordinate in the canvas can set dots, ODD number coordinate positions are for lines and walls
-      *. may be the insertion in arraylist could be in a certain order.
-    */
-
-
-
-//    public class delete(int[] Coordinate){
+//
+//    public void test() {
+//        // test run, whether it stores those coordinates of dots
+//        System.out.println("------------test run | add dots-------------");
+//        dots_coordinate.add(new int[]{1, 1});
+//        dots_coordinate.add(new int[]{1, 2});
+//        dots_coordinate.add(new int[]{1, 3});
+//        System.out.println("get the x/y coordinate of a certain dots");
+//        System.out.println(Arrays.toString(new int[]{dots_coordinate.get(1)[1]}));
+//        System.out.println(Arrays.toString(new int[]{dots_coordinate.size()}));// should give 3
+//        System.out.println(Arrays.toString(dots_coordinate.get(1))); // should give {1, 2}
+//
+//        System.out.println("------------test run | delete dots-------------");
+//        dots_coordinate.remove(0); //delete first one
+//        int[] a = {1, 2};
+//        System.out.println(dots_coordinate.size());
+//
+//        // delete the certain coordinate
+//        int pointer = 0;
+//        for (int i = 0; i < dots_coordinate.size(); i++) {
+//            if (Arrays.equals(a, (dots_coordinate.get(i)))) {
+//                dots_coordinate.remove(i);
+//            }
+//
+//            if (pointer == dots_coordinate.size()) {
+//                break;
+//            }
+//            pointer++;
+//        }
+//        System.out.println("get the x/y coordinate of a certain dots");
+//        System.out.println(dots_coordinate.size());// should give 1
+//        System.out.println(Arrays.toString(dots_coordinate.get(0))); // should give {1, 2}
+////        System.out.println(Arrays.toString(coordinate.get(1)));//should be fails
+//
+//        System.out.println("------------test run | add dots with add method-------------");
+//        //int[] TopRightCoordinate = {2, 2};
+//        int Length = 2;
+//        int Width = 1;
+//        //add(TopRightCoordinate, Length, Width); // add dots
+//        System.out.println(Arrays.toString(dots_coordinate.get(0))); // should give {1, 2}
+//       // System.out.println(Arrays.toString(dots_coordinate.get(1))); // should give {2, 2}
+//       // System.out.println(Arrays.toString(dots_coordinate.get(2))); // should give {2, 3}
+//       // System.out.println(Arrays.toString(dots_coordinate.get(3))); // should give {1, 3}
 //    }
-
-    /*input example: {1, 2}
-        expectation:
-        1. delete the array {1, 2} from the "coordinate" arraylist, IF IT EXIST
-        2. Change the canvas status of points with coordinate {1, 2} from {1, 0, 0} back into {0, 0, 0}
-        Notice that:
-        1. the coordinate should be detected whether it is EVEN or not at the beginning.
-        2. the status updates should happen right after everytime we use the add function.
-    */
-
-
-
 }

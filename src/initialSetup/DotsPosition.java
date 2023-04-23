@@ -1,27 +1,24 @@
 package initialSetup;
 
+import canvas.canvas_switching;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DotsPosition {
     public ArrayList<int[]> dots_coordinate = new ArrayList<>(); // create array storing status
+    canvas_switching cs = new canvas.canvas_switching();
+    public void add(int[] TopRightCoordinate, int Length, int Width) {
+        int[] TopRightDots = cs.PixelCanvas_to_DotsSpots(TopRightCoordinate);
 
-    public void add(int[] TopRightCoordinate, int Length, int Width,int[][] status[]) {
-        // Implementation of add function goes here
-        if (TopRightCoordinate[0] % 2 == 0 && TopRightCoordinate[1] % 2 == 0) {
-            for (int i = 1; i < Length + 1; i++) {
-                for (int j = 1; j < Width + 1; j++) {
-                    if  (!checkDup(new int[]{TopRightCoordinate[0] * j, TopRightCoordinate[1] * i}, dots_coordinate)){
-                        dots_coordinate.add(new int[]{TopRightCoordinate[0] * j, TopRightCoordinate[1] * i});
-                    }
-                    status[TopRightCoordinate[0] * i][TopRightCoordinate[1] * j][0] = 1;
-                }
-            }
-        }
+        for (int i = 1; i < Length + 1; i++) {
+            for (int j = 1; j < Width + 1; j++) {
+                if  (!checkDup(new int[]{TopRightDots[0] + 2*j, TopRightDots[1] + 2*i}, dots_coordinate)){
+                    dots_coordinate.add(new int[]{TopRightDots[0] + 2*j, TopRightDots[1] + 2*i});}}}
     }
 
 
-    public boolean checkDup(int[] target, ArrayList<int[]> coordinate){
+    public static boolean checkDup(int[] target, ArrayList<int[]> coordinate){
         for (int i = 0; i < coordinate.size(); i++){
             if (Arrays.equals(target, coordinate.get(i))){return true;}
         }
@@ -29,15 +26,12 @@ public class DotsPosition {
     }
 
 
-    public void delete(int[] target, int[][] status[]) {
+    public void delete(int[] target) {
+        int[] targetDots = cs.PixelCanvas_to_DotsSpots(target);
         // Implementation of add function goes here
-        if (target[0] % 2 == 0 && target[1] % 2 == 0) {
             for (int i = 0; i < dots_coordinate.size(); i++){
-                if (Arrays.equals(target, dots_coordinate.get(i))){
+                if (Arrays.equals(targetDots, dots_coordinate.get(i))){
                     dots_coordinate.remove(i);}
-                status[target[0]][target[1]][0] = 0;
-
-            }
         }
     }
 

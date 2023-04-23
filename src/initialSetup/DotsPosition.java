@@ -11,8 +11,8 @@ public class DotsPosition {
     public void add(int[] TopRightCoordinate, int Length, int Width) {
         int[] TopRightDots = cs.PixelCanvas_to_DotsSpots(TopRightCoordinate);
 
-        for (int i = 1; i < Length + 1; i++) {
-            for (int j = 1; j < Width + 1; j++) {
+        for (int i = 0; i < Length; i++) {
+            for (int j = 0; j < Width; j++) {
                 if  (!checkDup(new int[]{TopRightDots[0] + 2*j, TopRightDots[1] + 2*i}, dots_coordinate)){
                     dots_coordinate.add(new int[]{TopRightDots[0] + 2*j, TopRightDots[1] + 2*i});}}}
     }

@@ -10,11 +10,14 @@ public class DotsPosition {
     canvas_switching cs = new canvas.canvas_switching();
     public void add(int[] TopRightCoordinate, int Length, int Width) {
         int[] TopRightDots = cs.PixelCanvas_to_DotsSpots(TopRightCoordinate);
-
+        int[] false_value = new int[]{-1,-1};
+        if (!Arrays.equals(TopRightDots, false_value)){
         for (int i = 0; i < Length; i++) {
             for (int j = 0; j < Width; j++) {
-                if  (!checkDup(new int[]{TopRightDots[0] + 2*j, TopRightDots[1] + 2*i}, dots_coordinate)){
-                    dots_coordinate.add(new int[]{TopRightDots[0] + 2*j, TopRightDots[1] + 2*i});}}}
+                int [] new_dots = {TopRightDots[0] + 2*j,TopRightDots[1] + 2*i};
+                if  ((!checkDup(new_dots, dots_coordinate)) &&
+                        !Arrays.equals(cs.StructuralCanvas_to_PixelCanvas(new_dots), false_value)){
+                    dots_coordinate.add(new_dots);}}}}
     }
 
 

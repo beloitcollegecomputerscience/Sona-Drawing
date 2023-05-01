@@ -37,6 +37,12 @@ public class DotsPosition {
                     dots_coordinate.remove(i);}
         }
     }
+    public boolean getCanvasDots(int [] target){
+        for (int i = 0; i < dots_coordinate.size(); i++){
+            if (Arrays.equals(target, dots_coordinate.get(i))){return true;}
+        }
+        return false; 
+    }
 
 
 

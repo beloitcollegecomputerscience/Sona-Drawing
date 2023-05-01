@@ -1,63 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-  All rights reserved. Use is subject to license terms.
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-  This file is available and licensed under the following license:
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the distribution.
-  - Neither the name of Oracle Corporation nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EventHandler">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EventHandler">
   <children>
     <MenuBar useSystemMenuBar="true" VBox.vgrow="NEVER">
       <menus>
-            <Menu fx:id="helpMenu" mnemonicParsing="false" text="File" />
-            <Menu fx:id="helpMenu1" mnemonicParsing="false" text="Help" />
+            <Menu fx:id="helpMenu" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save as" />
+                  <MenuItem mnemonicParsing="false" text="Print" />
+                  <MenuItem mnemonicParsing="false" text="Exit" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Select" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Clear Selection" />
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Preferences" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Clear">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Clear Lines" />
+                  <MenuItem mnemonicParsing="false" text="Clear Walls" />
+                  <MenuItem mnemonicParsing="false" text="Clear Dots" />
+                  <MenuItem mnemonicParsing="false" text="Clear All" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Dots">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Fine Spacing" />
+                  <MenuItem mnemonicParsing="false" text="Medium Spacing" />
+                  <MenuItem mnemonicParsing="false" text="Coarse Spacing" />
+                  <SeparatorMenuItem mnemonicParsing="false" text="Show Which Dots" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Walls">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Hide Walls" />
+                  <MenuItem mnemonicParsing="false" text="Straight Bounces" />
+                  <MenuItem mnemonicParsing="false" text="Walls Allowed" />
+               </items>
+            </Menu>
+            <Menu fx:id="helpMenu1" mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About the Authors" />
+                  <MenuItem mnemonicParsing="false" text="Introduction to Sona" />
+                  <MenuItem mnemonicParsing="false" text="Problem Tutorials" />
+               </items></Menu>
       </menus>
     </MenuBar>
       <ToolBar prefHeight="40.0" prefWidth="800.0" VBox.vgrow="NEVER">
          <items>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cursor Mode">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cursor Mode :">
                <font>
                   <Font name="Monospaced Regular" size="15.0" />
                </font>
@@ -85,6 +93,20 @@
             <Slider fx:id="widthSlider" majorTickUnit="5.0" max="15.0" min="1.0" minorTickCount="4" prefWidth="75.0" showTickMarks="true" snapToTicks="true" value="5.0" />
             <Separator orientation="VERTICAL" prefHeight="0.0" />
             <Button fx:id="clearButton" mnemonicParsing="false" text="Clear" />
+            <Text layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Draw Speed :">
+               <font>
+                  <Font name="Monospaced Regular" size="15.0" />
+               </font>
+            </Text>
+            <MenuButton mnemonicParsing="false" text="Select">
+               <items>
+                  <CheckMenuItem mnemonicParsing="false" text="Slower" />
+                  <CheckMenuItem mnemonicParsing="false" text="Slow" />
+                  <CheckMenuItem mnemonicParsing="false" text="Normal" />
+                  <CheckMenuItem mnemonicParsing="false" text="Fast" />
+                  <CheckMenuItem mnemonicParsing="false" text="Faster" />
+               </items>
+            </MenuButton>
          </items>
          <VBox.margin>
             <Insets />
@@ -98,7 +120,9 @@
       </ToolBar>
       <AnchorPane prefHeight="601.0" prefWidth="800.0">
          <children>
-            <Canvas fx:id="canvas" height="601.0" layoutY="-1.0" width="800.0" />
+            <Canvas fx:id="canvas" height="601.0" width="1058.0" />
+            <TextField layoutX="78.0" layoutY="575.0" prefHeight="23.0" prefWidth="979.0" />
+            <Text layoutX="9.0" layoutY="591.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sona Name:" />
          </children>
       </AnchorPane>
   </children>

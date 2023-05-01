@@ -1,7 +1,7 @@
 import javafx.scene.shape.Line;
 import java.util.HashMap;
 
-public class LinesStoringWithHashTable {
+public class LineStoring {
 
     public static void main(String[] args) {
         //Creating lines

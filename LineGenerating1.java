@@ -6,7 +6,7 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 
-public class LinesGenerating1 extends Application {
+public class LineGenerating1 extends Application {
     @Override
     public void start(Stage stage) {
         //Creating a Path object

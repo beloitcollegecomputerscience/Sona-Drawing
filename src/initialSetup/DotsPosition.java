@@ -1,6 +1,6 @@
 package initialSetup;
 
-import canvas.canvas_switching;
+import canvas.canvas_switching; 
 
 import java.util.ArrayList;
 import java.util.Arrays;

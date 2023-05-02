@@ -2,19 +2,15 @@ package gui;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-
-import helperClasses.SliderOperation;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
 public class GUI {
-
-	protected static enum GUIState { // order is important
-		DOTS, WALLS, LINE, VIEW;
-	}
+	
+	private static final int WINDOW_WIDTH = 800;
+	private static final int WINDOW_HEIGHT = 600;
 	private static final String FXMLURL = "src/gui/gui.fxml";
 	private static GUI instance = null;
 	private static final boolean RESIZEABLE = false;
@@ -22,7 +18,9 @@ public class GUI {
 
 	private GUI() { // ran only once
 		try {
-			root = new Scene(readFXML());
+			root = new Scene(readFXML(), WINDOW_WIDTH, WINDOW_HEIGHT);
+			//TODO initialize canvas here, should be one line
+			//initialize everything else within canvas
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);

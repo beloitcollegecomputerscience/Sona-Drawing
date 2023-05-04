@@ -1,3 +1,5 @@
+package src.initialSetup;
+
 import javafx.scene.shape.Line;
 import java.util.HashMap;
 

@@ -6,7 +6,7 @@ import javafx.scene.shape.Shape;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LinessTest {
+public class Lines_Test {
     
     @Test
     public void testCollection() {

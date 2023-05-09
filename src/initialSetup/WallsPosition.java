@@ -41,7 +41,7 @@ public class WallsPosition {
         if (two_points[0][0] == two_points[1][0]){
             return 1; //1 vertical wall, 0 is horizontal wall
         }
-        else
-            return 0
+        else{
+            return 0;
         }
     }

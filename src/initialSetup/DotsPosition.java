@@ -46,7 +46,7 @@ public class DotsPosition {
     }
     
    public int[][] two_closest_point(int[] walls_position_coordinate) {
-        Point2D[] euclidean_distance_list = new Point2D[dots_coordinate.size()];
+        double [] euclidean_distance_list = new double[dots_coordinate.size()];
         Point2D point1 = new Point2D(walls_position_coordinate[0], walls_position_coordinate[1]);
 
         for (int i = 0; i < dots_coordinate.size(); i++) {

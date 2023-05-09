@@ -4,6 +4,7 @@ import canvas.canvas_switching;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.geometry.Point2D;
 
 public class DotsPosition {
     public ArrayList<int[]> dots_coordinate = new ArrayList<>(); // create array storing status
@@ -43,7 +44,23 @@ public class DotsPosition {
         }
         return false; 
     }
+    
+   public int[][] two_closest_point(int[] walls_position_coordinate) {
+        Point2D[] euclidean_distance_list = new Point2D[dots_coordinate.size()];
+        Point2D point1 = new Point2D(walls_position_coordinate[0], walls_position_coordinate[1]);
 
+        for (int i = 0; i < dots_coordinate.size(); i++) {
+            Point2D point2 = new Point2D(dots_coordinate.get(i)[0], dots_coordinate.get(i)[1]);
+            euclidean_distance_list[i] = point1.distance(point2);
+        }
+
+        Arrays.sort(euclidean_distance_list);
+
+        int first_closest = euclidean_distance_list[0];
+        int second_closest = euclidean_distance_list[1];
+
+        return new int[][] {{first_closest}, {second_closest}};
+    }
 
 
 ////  test runs:
